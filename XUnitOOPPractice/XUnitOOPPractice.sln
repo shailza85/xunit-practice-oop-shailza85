@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitOOPPractice", "XUnitOOPPractice\XUnitOOPPractice.csproj", "{60AA32B9-BED4-4B58-B8AC-2A80F65E031B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XUnitOOPPractice_Tests", "..\XUnitOOPPractice_Tests\XUnitOOPPractice_Tests.csproj", "{3F101BDA-9B13-4066-BCE6-599D2CCDC2F4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{60AA32B9-BED4-4B58-B8AC-2A80F65E031B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60AA32B9-BED4-4B58-B8AC-2A80F65E031B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60AA32B9-BED4-4B58-B8AC-2A80F65E031B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60AA32B9-BED4-4B58-B8AC-2A80F65E031B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F101BDA-9B13-4066-BCE6-599D2CCDC2F4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F101BDA-9B13-4066-BCE6-599D2CCDC2F4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F101BDA-9B13-4066-BCE6-599D2CCDC2F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F101BDA-9B13-4066-BCE6-599D2CCDC2F4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EC0DBA32-038B-4A05-B8CF-1FDCBEA89AF5}
+	EndGlobalSection
+EndGlobal
