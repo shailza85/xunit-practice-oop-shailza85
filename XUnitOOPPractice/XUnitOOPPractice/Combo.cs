@@ -20,22 +20,19 @@ namespace XUnitOOPPractice
 
     public class Combo: MenuItem
     {
-        public override double Price { get; set; }
-        //private List<FoodItem> ComboItems { get; set; }
-        public List<FoodItem> ComboItems { 
+      
+        public List<FoodItem> ComboItems { get; set; }
+
+     public override double Price
+        {
             get
             {
-                return ComboItems;
+                // LINQ: Select all of the prices, add them up, then multiple by 0.8 (80%, or 20% off).
+                return ComboItems.Select(x => x.Price).Sum() * 0.8;
             }
-            set
-            {
-                double newPrice= ComboItems.Select(x => x.Price).Sum();
-                double newPricing = newPrice - 0.20;
-                
-            }
-            
+            // The value is derived from ComboItems, so setting the price shouldn't work, but we have to declare it as a consequence of the derived property.
+            set { }
         }
-
         public Combo()
         {
             ComboItems = new List<FoodItem>();

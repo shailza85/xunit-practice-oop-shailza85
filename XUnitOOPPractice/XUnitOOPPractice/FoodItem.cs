@@ -17,12 +17,12 @@ namespace XUnitOOPPractice
     {
         public override double Price { get; set; }
 
-        public enum Type
+        public enum TypeValue
         {
             FrenchFries,
             ChickenStrips,
             Drink
         }
-        public Type fooditem { get; set; }
+        public TypeValue Type { get; set; }
     }
 }

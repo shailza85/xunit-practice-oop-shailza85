@@ -21,34 +21,67 @@ namespace XUnitOOPPractice
      */
     public class Order
     {
-        private List<Order> Items { get; set; }
-        private List<FoodItem> ComboItems { get; set; }
+        private List<MenuItem> Items { get; set; }
+        
         public int ItemCount => Items.Count;
-        public double Price { get; set; }
-        public void AddItem(FoodItem item)
+
+        public double Total => Items.Select(x => x.Price).Sum();
+
+        public void AddItem(MenuItem toAdd)
         {
+            // Refactoring idea courtesy of Damir.
+            Items.Add(toAdd);
 
-            if (item.GetType() == Type.GetType("FrenchFries") && item.GetType() == Type.GetType("ChickenStrips") && item.GetType() == Type.GetType("Drink"))
+            // If we have 3 distinct types of food...
+            if (Items.Where(x => x.GetType() == typeof(FoodItem)).Select(x => ((FoodItem)x).Type).Distinct().Count() == 3)
             {
+                // Select the first of each type of food.
+                FoodItem chicken = (FoodItem)Items.Where(x => x.GetType() == typeof(FoodItem) && ((FoodItem)x).Type == FoodItem.TypeValue.ChickenStrips).First();
+                FoodItem drink = (FoodItem)Items.Where(x => x.GetType() == typeof(FoodItem) && ((FoodItem)x).Type == FoodItem.TypeValue.Drink).First(); ;
+                FoodItem fries = (FoodItem)Items.Where(x => x.GetType() == typeof(FoodItem) && ((FoodItem)x).Type == FoodItem.TypeValue.FrenchFries).First();
 
-                ComboItems.Add(item);
-            }          
-           
-            
+                /*
+                --- Cast the result of everything following this to a FoodItem (otherwise it returns a MenuItem). ---
+                (FoodItem)
+                --- Operating on the Items list ---
+                Items
+                --- Using Where to filter things out ---
+                .Where(
+                    --- Filtering out non-FoodItems (Combos), this needs to first because otherwise we will be trying to potentially cast Combos as FoodItems and it will not be happy ---
+                    x => x.GetType() == typeof(FoodItem) &&
+                    --- AND Filtering out non-FrenchFries FoodItems ---
+                    ((FoodItem)x).Type == FoodItem.TypeValue.FrenchFries
+                    )
+                --- Get the first item that is returned from the Where ---
+                .First()
+                */
 
-        }
 
-        public void RemoveItem(Order Items)
-        {
-            if (Items.GetType() == typeof(Combo))
-            {
-                Items.RemoveItem(Items);
+                // Build the combo.
+                Combo newCombo = new Combo()
+                {
+                    ComboItems = new List<FoodItem>() { chicken, fries, drink }
+                };
+
+                // Remove the combo items from the Items list.
+                Items = Items.Except(newCombo.ComboItems).ToList();
+
+                // Add the combo to the list.
+                Items.Add(newCombo);
             }
         }
 
-        public double Total()
+        public void RemoveItem()
         {
-            return Items.Select(x => x.Price).Sum();
+            // Removes the last items in the list (most recent addition, assuming you don't sort the list).
+            Items.RemoveAt(Items.Count - 1);
         }
+
+        public Order()
+        {
+            Items = new List<MenuItem>();
+        }
+
+
     }
 }

@@ -8,9 +8,9 @@ namespace XUnitOOPPractice
     //Create a public abstract class called MenuItem with the following properties:
     //Price(double, abstract)
 
-    public abstract class MenuItem
+     abstract public class MenuItem
     {
 
-        public abstract double Price { get; set; }
+        abstract public  double Price { get; set; }
     }
 }
