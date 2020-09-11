@@ -21,7 +21,7 @@ namespace XUnitOOPPractice
      */
     public class Order
     {
-        private List<MenuItem> Items { get; set; }
+        public List<MenuItem> Items { get; set; }
         
         public int ItemCount => Items.Count;
 
